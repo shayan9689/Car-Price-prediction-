@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #ff7f50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff4500;
+        }
+
+        .prediction {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Car Price Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="Year">Year</label>
+            <input type="number" name="Year" id="Year" required placeholder="e.g., 2018">
+
+            <label for="Mileage">Mileage (KM)</label>
+            <input type="number" name="Mileage" id="Mileage" required placeholder="e.g., 45000">
+
+            <label for="CarName">Car Name</label>
+            <select name="CarName" id="CarName" required>
+                <option value="Civic">Civic</option>
+                <option value="Corolla">Corolla</option>
+                <option value="City">City</option>
+                <option value="Accord">Accord</option>
+                <option value="Camry">Camry</option>
+                <option value="Swift">Swift</option>
+                <option value="Alto">Alto</option>
+                <option value="Mehran">Mehran</option>
+                <option value="Elantra">Elantra</option>
+                <option value="Sonata">Sonata</option>
+            </select>
+
+            <label for="Brand">Brand</label>
+            <select name="Brand" id="Brand" required>
+                <option value="Honda">Honda</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Suzuki">Suzuki</option>
+                <option value="Hyundai">Hyundai</option>
+            </select>
+
+            <input type="submit" value="Predict Price">
+        </form>
+
+        {% if prediction_text %}
+        <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
